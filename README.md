@@ -1,6 +1,6 @@
 # RandomCardPicker
 
-Welcome to my first Xamarin application !
+Welcome to my first very simple Xamarin application !
 
 ## Requirements
 - Visual Studio 201X
@@ -13,6 +13,7 @@ Welcome to my first Xamarin application !
     - MainActivity.cs in your main activity.
     - Drawable files in your drawable folder.
     - Layout files in your layout folder.
+    - Strings.xml file in your values folder.
 - Plug your smartphone on your computer.
 - Start the compiler !
 
