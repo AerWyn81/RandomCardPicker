@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">RandomCardChooser</string>
+
+  <string name="defautCartesDefausses">0</string>
+  <string name="defautCartesTotales">54</string>
+  <string name="btnShoot">Shoot</string>
+  <string name="btnShuffle">Shuffle</string>
+
+  <string name="noCards">No remaining card ! Press Shuffle to refill</string>
+</resources>
