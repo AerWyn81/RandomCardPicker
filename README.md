@@ -19,4 +19,5 @@ Welcome to my first very simple Xamarin application !
 
 ## Screenshot
 
-![Image application demo](https://github.com/AerWyn81/RandomCardPicker/blob/master/docs/card.png)
+![Image application demo](https://github.com/AerWyn81/RandomCardPicker/blob/master/docs/1.png)
+![Image application demo](https://github.com/AerWyn81/RandomCardPicker/blob/master/docs/2.png)
