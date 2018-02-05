@@ -6,6 +6,10 @@ using Android.Widget;
 using Android.OS;
 using System;
 using System.Collections.Generic;
+using RandomCardChooser.Core;
+using Android.Content;
+using RandomCardChooser.UI;
+using Newtonsoft.Json;
 
 namespace RandomCardChooser
 {
@@ -16,9 +20,9 @@ namespace RandomCardChooser
         private ImageView imgCards;
         private TextView tvDiscard, tvCardsLeft;
         private Random rnd;
-
         private int nbRandom, nbDiscardingCards, nbLeftCards;
         private List<int> listResId;
+        private List<Card> discard;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -31,7 +35,27 @@ namespace RandomCardChooser
 
             shoot.Click += delegate { ShootOnClick(); };
             shuffle.Click += delegate { ShuffleOnClick(); };
+
+            //tvCardsLeft.Click += delegate { CardLefOnClick(); };
+            tvDiscard.Click += delegate { CardDiscardOnClick(); };
         }
+
+        /// <summary>
+        /// Display list of cards discarded
+        /// </summary>
+        private void CardDiscardOnClick()
+        {
+            Intent intent = new Intent(this, typeof(CardListActivity));
+            Bundle extras = new Bundle();
+            extras.PutString("cards", JsonConvert.SerializeObject(discard));
+            intent.PutExtras(extras);
+            StartActivity(intent);
+        }
+
+        //private void CardLefOnClick()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         /// <summary>
         /// Set var's
@@ -40,6 +64,7 @@ namespace RandomCardChooser
         {
             rnd = new Random();
             listResId = new List<int>();
+            discard = new List<Card>();
             fillListRes();
         }
         /// <summary>
@@ -63,8 +88,17 @@ namespace RandomCardChooser
             nbRandom = GenRandomNumber();
 
             if (nbRandom != 999) {
+                Toast.MakeText(this, CardList.getNomCarte(listResId[nbRandom]), ToastLength.Short).Show();
                 imgCards.Visibility = Android.Views.ViewStates.Visible;
                 imgCards.SetImageResource(listResId[nbRandom]);
+
+                discard.Add(new Card
+                {
+                    cardName = CardList.getNomCarte(listResId[nbRandom]),
+                    drawCardNb = listResId[nbRandom],
+                    nbCardDirscard = nbDiscardingCards + 1,
+                });
+
                 listResId.RemoveAt(nbRandom);
                 tvDiscard.Text = (nbDiscardingCards = nbDiscardingCards + 1).ToString();
                 tvCardsLeft.Text = (nbLeftCards = nbLeftCards - 1).ToString();

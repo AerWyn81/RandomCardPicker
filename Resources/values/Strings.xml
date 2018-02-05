@@ -8,4 +8,7 @@
   <string name="btnShuffle">Shuffle</string>
 
   <string name="noCards">No remaining card ! Press Shuffle to refill</string>
+  <string name="cardNumber">Card number :</string>
+  <string name="pickedCard">Picked card :</string>
+  <string name="noCardDiscarded">No card discarded !</string>
 </resources>
